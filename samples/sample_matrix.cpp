@@ -10,7 +10,7 @@
 using namespace std;
 //---------------------------------------------------------------------------
 
-/*void main()
+void main()
 {
   TMatrix<int> a(5), b(5), c(5);
   int i, j;
@@ -31,7 +31,7 @@ using namespace std;
 }
 //---------------------------------------------------------------------------*/
 
-template <class ValType>
+/*template <class ValType>
 void Print(TVector<ValType>& v)
 {
 	cout << "Choose operation" << endl;
@@ -199,7 +199,7 @@ void operations(TVector<ValType>& v, int number)
 }
 void main()
 {
-	int size, number;
+	int size, number=0;
 	while (true)
 	{
 		cout << "Enter a size of vector:" << endl;
@@ -218,4 +218,4 @@ void main()
 		}
 		
 	}
-}
+}*/
