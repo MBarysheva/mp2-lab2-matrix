@@ -88,7 +88,12 @@ TEST(TVector, assign_operator_change_vector_size)
 
 TEST(TVector, can_assign_vectors_of_different_size)
 {
-  ADD_FAILURE();
+	TVector<int> a(2), b(3);
+	for (int i = 0; i < a.GetSize(); i++)
+		a[i] = i + 1;
+	ASSERT_NO_THROW(b = a);
+	for (int i = 0; i < b.GetSize(); i++)
+		EXPECT_EQ(b[i], i + 1);
 }
 
 TEST(TVector, compare_equal_vectors_return_true)
@@ -128,12 +133,20 @@ TEST(TVector, can_add_vectors_with_equal_size)
 
 TEST(TVector, cant_add_vectors_with_not_equal_size)
 {
-  ADD_FAILURE();
+  ADD_FAILURE(0);
 }
 
 TEST(TVector, can_subtract_vectors_with_equal_size)
 {
-  ADD_FAILURE();
+	TVector<int> a(10), b(10), c(10), res(10);
+	for (int i = 0; i < a.GetSize(); i++)
+	{
+		a[i] = i + 1;
+		b[i] = i + 1;
+		res[i] = 0;
+	}
+	ASSERT_NO_THROW(c = a - b);
+		EXPECT_EQ(c, res);
 }
 
 TEST(TVector, cant_subtract_vectors_with_not_equal_size)
