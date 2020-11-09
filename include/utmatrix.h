@@ -211,13 +211,24 @@ TVector<ValType> TVector<ValType>::operator-(const TVector<ValType>& v)
 template <class ValType> // скалярное произведение
 ValType TVector<ValType>::operator*(const TVector<ValType>& v)
 {
-	if ((Size != v.Size) || (StartIndex != v.StartIndex))
-		throw "error";
-	TVector tmp(*this);
-	ValType res = 0;
-	for (int i = StartIndex; i < Size; i++)
-		res += pVector[i] * v.pVector[i];
-	return res;
+	if (StartIndex + Size != v.Size + v.StartIndex)
+		throw "Not equal size of vectors";
+	else
+	{
+		ValType res = 0;
+		if (StartIndex < v.StartIndex)
+		{
+			for (int i = 0; i < v.Size; i++)
+				res += pVector[i + v.StartIndex - StartIndex] * v.pVector[i];
+			return res;
+		}
+		else
+		{
+			for (int i = 0; i < Size; i++)
+				res += pVector[i] * v.pVector[i + StartIndex - v.StartIndex];
+			return res;
+		}
+	}
 } /*-------------------------------------------------------------------------*/
 
 
