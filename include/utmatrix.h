@@ -219,13 +219,13 @@ ValType TVector<ValType>::operator*(const TVector<ValType>& v)
 		if (StartIndex < v.StartIndex)
 		{
 			for (int i = 0; i < v.Size; i++)
-				res += pVector[i + v.StartIndex - StartIndex] * v.pVector[i];
+				res = pVector[i + v.StartIndex - StartIndex] * v.pVector[i];
 			return res;
 		}
 		else
 		{
 			for (int i = 0; i < Size; i++)
-				res += pVector[i] * v.pVector[i + StartIndex - v.StartIndex];
+				res = pVector[i] * v.pVector[i + StartIndex - v.StartIndex];
 			return res;
 		}
 	}
